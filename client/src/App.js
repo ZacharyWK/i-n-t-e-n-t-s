@@ -22,7 +22,6 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 // import Home from "./pages/Home";
 // import Search from "./pages/Search";
-// import Blogs from "./pages/Blogs";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

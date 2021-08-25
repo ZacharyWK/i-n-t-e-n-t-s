@@ -13,8 +13,8 @@ import Auth from "../utils/auth";
 import Header from "../components/Header";
 import Home from "./Home";
 import Search from "./Search";
-import Blogs from "./Blogs";
-import SingleThought from "./SingleThought";
+import SingleBaseCampPost from "./BaseCampPostSingle";
+import BaseCamp from "./BaseCamp";
 import Footer from "../components/Footer";
 
 
@@ -59,7 +59,10 @@ function Backplate() {
 
                   <Route path="/home"><Home /></Route>
 
-                  <Route path="/blog"><SingleThought /></Route>
+                  {/* <Route path="/blog"><SingleThought /></Route> */}
+
+                  <Route path="/basecamp"><BaseCamp /></Route>
+
 
                 </Switch>
           </div>

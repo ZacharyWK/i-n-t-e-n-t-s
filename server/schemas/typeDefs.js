@@ -29,6 +29,7 @@ const typeDefs = gql`
 
   type Thought {
     _id: ID
+    parkCode: String
     thoughtText: String
     thoughtAuthor: String
     createdAt: String
@@ -72,7 +73,7 @@ const typeDefs = gql`
     removeBlogPost(blogPostId: ID!): BlogPost
     removeBlogComment(blogPostId: ID!, commentId: ID!): BlogPost
     
-    addThought(thoughtText: String!, thoughtAuthor: String!): Thought
+    addThought(parkCode: String!, thoughtText: String!, thoughtAuthor: String!): Thought
     addComment(
       thoughtId: ID!
       commentText: String!

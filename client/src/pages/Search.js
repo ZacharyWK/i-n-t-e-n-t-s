@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import Blogs from "./Blogs";
+import ParkBlog from "./ParkBlog";
 import axios from "axios";
 import "./css/search.css";
 import styled, { css } from "styled-components";
+import { BrowserRouter as Router, Route, Redirect, Switch, Link } from "react-router-dom";
+
 
 const Search = () => {
   const [selection, setSelection] = useState();
@@ -13,6 +15,10 @@ const Search = () => {
   const [showBlog, setShowBlog] = useState(false);
 
   const [park, setPark] = useState();
+
+  let pathName = async () => {
+    park.name.replace(/\s+/g, '');
+  }
 
   const findParks = async () => {
     const response = await axios.get(`/api/parks/${selection}`);
@@ -28,9 +34,15 @@ const Search = () => {
   };
 
   if (showBlog) {
-    return <Blogs park={park} setShowBlog={setShowBlog} />;
+    return (
+
+      <ParkBlog park={park} setShowBlog={setShowBlog}/>
+
+    );
   }
 
+
+// SEARCH BAR
   return (
     <main className="mainSearch">
       <div className="searchInput">
@@ -96,31 +108,41 @@ const Search = () => {
         </button>
       </div>
 
-      {
-      results ? results.map((park) => (
-            <div className="parkCard">
-              <a class="singleCard" onClick={() => openParkBlog(park.id)}>
-                <div class="cardTitle" key={park.id}>
-                  {park.name}
-                </div>
-                <img class="parkImg" src={park.images[0].url} height="200" />
-                <ul class="info">
-                  <li>
-                    Address: {park.addresses[0].line1} {park.addresses[0].city}{" "}
-                    {park.addresses[0].stateCode} {park.addresses[0].postalCode}
-                  </li>
-                  <br />
-                  <li>Latititude: {park.latitude}</li>
-                  <li>Longitude: {park.longitude}</li>
-                </ul>
-              </a>
-            </div>
 
-      )) : null
-      }
 
-    </main>
-  );
+{/* PARK CARD PER RESULT */}
+{
+results 
+? 
+results.map((park) => (
+<div className="parkCard">
+  <a class="singleCard" onClick={() => openParkBlog(park.id)}>
+
+    <div class="cardTitle" key={park.id}>{park.name}</div>
+
+    <img class="parkImg" src={park.images[0].url} height="200" />
+
+    <ul class="info">
+      <li>Address: 
+        {park.addresses[0].line1} 
+        {park.addresses[0].city}{" "}
+        {park.addresses[0].stateCode} 
+        {park.addresses[0].postalCode}
+        </li>
+      <br />
+      <li>Latitude: {park.latitude}</li>
+      <li>Longitude: {park.longitude}</li>
+      </ul>
+
+    </a>
+</div>
+)) 
+: 
+null
+}
+
+</main>
+);
 };
 
 export default Search;

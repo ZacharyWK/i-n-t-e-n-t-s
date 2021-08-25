@@ -1,12 +1,12 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
+import BaseCampList from '../components/BaseCampList';
+import BaseCampForm from '../components/BaseCampForm';
 
 import { QUERY_THOUGHTS } from '../utils/queries';
 
-const Blogs = ({park,setShowBlog}) => {
+const BaseCamp = ({park,setShowBlog}) => {
   const { loading, data } = useQuery(QUERY_THOUGHTS);
   const thoughts = data?.thoughts || [];
 
@@ -16,17 +16,17 @@ const Blogs = ({park,setShowBlog}) => {
         <div
           className="col-12 col-md-10 mb-3 p-3"
           // style={{  }}
-        >{park.name}
-        <button onClick={()=>setShowBlog(false)}>back</button>
+        >
+        {/* <button onClick={()=>setShowBlog(false)}>back</button> */}
 
 {/* router /id then pull param from url */}
-          <ThoughtForm />
+          <BaseCampForm />
         </div>
         <div className="col-12 col-md-8 mb-3">
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList
+            <BaseCampList
               thoughts={thoughts}
               title="My Blog..."
             />
@@ -38,4 +38,4 @@ const Blogs = ({park,setShowBlog}) => {
   );
 };
 
-export default Blogs;
+export default BaseCamp;

@@ -9,7 +9,7 @@ import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
 
-const SingleThought = () => {
+const SingleParkBlogPost = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { thoughtId } = useParams();
 
@@ -26,10 +26,10 @@ const SingleThought = () => {
   return (
     <div>
       <h3>
-        {/* HEY{thought.thoughtAuthor} <br />
+        HEY{thought.thoughtAuthor} <br />
         <span>
           Welcome User{thought.createdAt}
-        </span> */}
+        </span>
       </h3>
       <div>
         <blockquote>
@@ -47,4 +47,4 @@ const SingleThought = () => {
   );
 };
 
-export default SingleThought;
+export default SingleParkBlogPost;

@@ -47,7 +47,7 @@ const Signup = () => {
         </Link>
       <div>
         <div className="signUpCard">
-          <h4>Sign Up</h4>
+          <h2>Sign Up</h2>
           <div>
             {data ? (
               <p>

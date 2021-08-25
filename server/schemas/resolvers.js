@@ -15,7 +15,7 @@ const resolvers = {
       return Thought.find(params).sort({ createdAt: -1 });
     },
     thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
+      return Thought.findOne({ _id: thoughtId});
     },
     users: async () => {
       return User.find().populate('blogPosts');
@@ -104,12 +104,13 @@ const resolvers = {
     },
 
 
-    addThought: async (parent, { thoughtText, thoughtAuthor }) => {
-      const thought = await Thought.create({ thoughtText, thoughtAuthor });
+    addThought: async (parent, { parkCode, thoughtText, thoughtAuthor }) => {
+      const thought = await Thought.create({ parkCode, thoughtText, thoughtAuthor });
 
       await User.findOneAndUpdate(
         { username: thoughtAuthor },
-        { $addToSet: { thoughts: thought._id } }
+        { $addToSet: { thoughts: thought._id } },
+        { $parkCode: parkCode}
       );
 
       return thought;

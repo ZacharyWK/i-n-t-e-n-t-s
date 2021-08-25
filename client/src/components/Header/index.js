@@ -27,8 +27,8 @@ const Header = () => {
           <Link className="navItem" to="/search">
             find<b>PARK</b>
           </Link>
-          <Link className="navItem" to="/blog">
-            my<b>BLOG</b>
+          <Link className="navItem" to="/basecamp">
+            base<b>CAMP</b>
           </Link>
           <Link className="logOut" onClick={logout}>
             log<b>OUT</b>

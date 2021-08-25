@@ -79,9 +79,10 @@ export const ADD_BLOGCOMMENT = gql`
 `;
 
 export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!, $thoughtAuthor: String!) {
-    addThought(thoughtText: $thoughtText, thoughtAuthor: $thoughtAuthor) {
+  mutation addThought($parkCode: String!, $thoughtText: String!, $thoughtAuthor: String!) {
+    addThought(parkCode:$parkCode, thoughtText: $thoughtText, thoughtAuthor: $thoughtAuthor) {
       _id
+      parkCode
       thoughtText
       thoughtAuthor
       createdAt

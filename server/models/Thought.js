@@ -19,6 +19,11 @@ const thoughtSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
+  parkCode: {
+    type: String,
+    required: true,
+    minlength: 1
+  },
   comments: [
     {
       commentText: {
